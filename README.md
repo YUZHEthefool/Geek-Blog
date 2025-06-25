@@ -49,3 +49,10 @@ go run main.go
 cd frontend
 npm install
 npm start
+
+###前端启动
+
+```bash
+cd frontend
+npm install
+npm start
