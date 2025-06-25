@@ -1,0 +1,132 @@
+.create-post {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.editor-header h1 {
+  color: var(--text-primary);
+}
+
+.preview-toggle {
+  background: var(--bg-secondary);
+  border: 2px solid var(--text-primary);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.editor-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  flex-wrap: wrap;
+}
+
+.editor-toolbar button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 0;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+  background: var(--border-color);
+  border-color: var(--text-primary);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.uploading {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+}
+
+.form-group textarea {
+  font-family: 'Fira Code', monospace;
+  resize: vertical;
+  min-height: 400px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.submit-btn {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background: var(--text-secondary);
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+}
+
+.cancel-btn {
+  background: transparent;
+  border: 2px solid var(--error-color);
+  color: var(--error-color);
+  padding: 1rem 2rem;
+}
+
+.cancel-btn:hover {
+  background: var(--error-color);
+  color: white;
+}
+
+.preview-container {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.post-preview {
+  color: #e0e0e0;
+}

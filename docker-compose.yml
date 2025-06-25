@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: geekblog-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: geekblog
+    volumes:
+      - mongodb_data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - geekblog-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile.backend
+    container_name: geekblog-backend
+    restart: always
+    environment:
+      PORT: 8080
+      MONGO_URI: mongodb://admin:password123@mongodb:27017/geekblog?authSource=admin
+      DB_NAME: geekblog
+      JWT_SECRET: your-secret-key-change-this
+      UPLOAD_PATH: /app/uploads
+    volumes:
+      - ./backend/uploads:/app/uploads
+    depends_on:
+      - mongodb
+    ports:
+      - "8080:8080"
+    networks:
+      - geekblog-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile.frontend
+    container_name: geekblog-frontend
+    restart: always
+    environment:
+      REACT_APP_API_URL: /api
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - geekblog-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: geekblog-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - geekblog-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  geekblog-network:
+    driver: bridge
