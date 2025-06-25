@@ -39,20 +39,19 @@
 - MongoDB
 - Docker (可选)
 
-### 后端启动
+
+
+### 前端与后端启动
 
 ```bash
-cd backend
-go mod download
-go run main.go
-
 cd frontend
 npm install
 npm start
 
-###前端启动
+cd backend
+go mod download
+go run main.go
 
-```bash
 cd frontend
 npm install
 npm start
