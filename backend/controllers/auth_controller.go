@@ -2,8 +2,6 @@ package controllers
 
 import (
     "net/http"
-    
-    "geek-blog/config"
     "geek-blog/utils"
     
     "github.com/gin-gonic/gin"
